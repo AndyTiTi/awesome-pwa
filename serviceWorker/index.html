@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>首页</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="./index.css">
+  <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+  <!-- <div id="installButton"></div> -->
+
+  <button id="installButton" hidden>Install</button>
+
+  <div class="card-container">
+    <div class="card">CARD1</div>
+    <div class="card">CARD2</div>
+    <div class="card">CARD3</div>
+    <div class="card">CARD4</div>
+    <div class="card">CARD5</div>
+    <div class="card">CARD6</div>
+    <div class="card">CARD7</div>
+    <div class="card">CARD8</div>
+    <div class="card">CARD9</div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2023 栈先锋. All rights reserved.</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+  </footer>
+  <script>
+    // 当DOM完全加载后执行
+    window.onload = function () {
+      let installPrompt = null;
+      const installButton = document.getElementById('installButton');
+      init();
+    };
+
+    function init () {
+      registerServiceWorker();
+      setupInstallPromptEvent();
+    }
+
+    function registerServiceWorker () {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./service-worker.js')
+          .then(function (registration) {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          })
+          .catch(function (err) {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+      }
+    }
+
+    function setupInstallPromptEvent () {
+      window.addEventListener('beforeinstallprompt', (e) => {
+        // 阻止自动显示系统默认的安装提示
+        e.preventDefault();
+        // 保存事件对象，用于稍后的用户响应
+        installPrompt = e;
+        installButton.removeAttribute("hidden");
+      });
+    }
+
+    function disableInAppInstallPrompt () {
+      installPrompt = null;
+      installButton.setAttribute("hidden", "");
+    }
+
+    // Adding an in-app install UI 添加应用内安装按钮
+    // https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/How_to/Trigger_install_prompt
+    installButton.addEventListener('click', async () => {
+      if (!installPrompt) {
+        return;
+      }
+      const result = await installPrompt.prompt();
+      console.log(`Install prompt was: ${result.outcome}`);
+      disableInAppInstallPrompt();
+    });
+  </script>
+</body>
+
+</html>

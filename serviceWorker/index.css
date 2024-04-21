@@ -1,0 +1,152 @@
+:root{
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --info-color: #17a2b8;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+}
+h2{
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+#installButton{
+  /* position: fixed;
+  bottom: 20px;
+  right: 20px;
+  top: 20px;
+  height: 40px;
+  z-index: 999; */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  background: linear-gradient(145deg, var(--primary-color), var(--success-color));
+}
+
+#installButton:hover{
+  background-color: #0056b3;
+}
+
+#installPrompt{
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+  background: var(--info-color);
+}
+
+#installPrompt p{
+  margin: 0;
+}
+
+#installPrompt p:first-child{
+  font-weight: bold;
+}
+
+#installPrompt p:last-child{
+  font-style: italic;
+}
+
+.footer {
+  background-color: var(--dark-color);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.social-icons a {
+  margin: 0 5px;
+  font-size: 24px;
+  color: var(--light-color);
+}
+
+.social-icons a:hover {
+  color: var(--primary-color);
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 创建三列 */
+  grid-gap: 10px; /* 卡片之间的间距 */
+  padding: 10px; /* 容器内边距 */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card {
+  background-size: cover;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  font-size: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 为每个卡片添加不同的背景渐变 */
+.card:nth-child(1) {
+  background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+}
+
+.card:nth-child(2) {
+  background-image: linear-gradient(45deg, #a18cd1 0%, #fbc2eb 99%, #fbc2eb 100%);
+}
+
+.card:nth-child(3){
+  background-image: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.card:nth-child(4) {
+  background-image: linear-gradient(45deg, #43a047 0%, #37474f 100%);
+}
+
+.card:nth-child(5) {
+  background-image: linear-gradient(45deg, #c27bb6 0%, #ff7675 100%);
+}
+
+.card:nth-child(6) {
+  background-image: linear-gradient(45deg, #48c6ef 0%, #6f86d8 100%);
+}
+
+.card:nth-child(7) {
+  background-image: linear-gradient(45deg, #009688 0%, #84fab0 100%);
+}
+
+.card:nth-child(8) {
+  background-image: linear-gradient(45deg, #3a1217 0%, #ffdde1 100%);
+}
+
+.card:nth-child(9) {
+  background-image: linear-gradient(45deg, #00b0ff 0%, #82fe95 100%);
+}
+
+/* 继续为每个 .card 添加不同的背景渐变...直到第九个 */
+
+/* 响应式设计：当屏幕宽度不足以显示三列时，卡片将堆叠显示 */
+@media (max-width: 600px) {
+  .card-container {
+    grid-template-columns: 1fr; /* 单列 */
+  }
+  #installPrompt {
+    margin-top: 80px;
+  }
+}

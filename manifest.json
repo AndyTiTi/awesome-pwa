@@ -1,0 +1,17 @@
+{
+  "name": "栈先锋",
+  "short_name": "StackX",
+  "description": "一个基于区块链的数字资产交易平台",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000"
+}

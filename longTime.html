@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Web Worker Fibonacci Example</title>
+</head>
+
+<body>
+  <script>
+
+    // 创建新的 Worker
+    var worker = new Worker('./fibonacciWorker.js');                     // 计算耗时: 118.2000 毫秒
+    // var worker = new Worker('./fibonacciWorkerImproveVersion.js');    // 计算耗时: 1075.2000 毫秒
+    // 计算开始时间
+    var startTime = performance.now();
+    // 当接收到来自 Worker 的消息时
+    worker.onmessage = function (e) {
+      // 计算结束时间
+      var endTime = performance.now();
+
+      // 显示结果和耗时
+      console.log(`斐波那契数列第 ${n} 项是: ${e.data}`);
+      console.log(`计算耗时: ${(endTime - startTime).toFixed(4)} 毫秒`);
+    };
+
+    // 启动 Worker 并请求计算斐波那契数列的第 40 项
+    var n = 40;
+    worker.postMessage(n);
+  </script>
+</body>
+
+</html>
